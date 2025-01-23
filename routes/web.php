@@ -17,11 +17,11 @@ Route::get('/home', function () {
     return view('home', ['title' => 'Home Page']);
 });
 Route::get('/cai', function () {
-    return view('cai', ['title' => 'cai', 'nama' => 'Mulyadi']);
+    return view('cai', ['title' => 'Cai', 'nama' => 'PI + PI = PIPI']);
 });
 Route::get('/blog', function () {
-    return view('blog', ['title' => 'blog']);
+    return view('blog', ['title' => 'Blog']);
 });
 Route::get('/contact', function () {
-    return view('contact', ['title' => 'contact']);
+    return view('contact', ['title' => 'Contact']);
 });
