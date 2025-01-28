@@ -13,9 +13,7 @@ Route::get('/cai', function () {
     return view('cai', ['title' => 'Cai', 'nama' => 'SAID SUDIRMAN']);
 });
 Route::get('/posts', function () {
-    // $posts = Post::with(['author','category'])->latest()->get();
-    $posts = Post::latest()->get();
-    return view('posts', ['title' => 'blog', 'posts' => $posts]);
+    return view('posts', ['title' => 'Blog', 'posts' =>Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString()]);
 });
 
 Route::get('/posts/{post:slug}', function(Post $post){
