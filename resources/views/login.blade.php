@@ -1,29 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <form action="{{ route('prosesLogin') }}" method="post">
-        @csrf
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">User Name</label>
-          <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">Masukkan User Name Anda</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-center mb-4">Login</h2>
+        @if ($errors->any())
+            <div class="mb-4 text-red-500">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label class="block text-gray-700">Email</label>
+                <input type="email" name="email" required class="w-full p-2 border rounded-lg">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Password</label>
+                <input type="password" name="password" required class="w-full p-2 border rounded-lg">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
+                Login
+            </button>
+        </form>
+    </div>
+</body>
 </html>
