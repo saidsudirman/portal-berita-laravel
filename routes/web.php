@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/home', function () {
     return view('home', ['title' => 'Home Page 1    '])->name('WELCOME HOME');
@@ -35,11 +35,10 @@ Route::get('/categories/{category:slug}', function(Category $category){
 Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 });
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('Login');
+Route::get('/index', function () {
+    return view('admin.index'); // Ganti dengan tampilan dashboard
+})->middleware('auth');
