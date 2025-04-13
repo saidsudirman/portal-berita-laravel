@@ -9,7 +9,8 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('login');
+        $type_menu = 'event';
+        return view('login', compact('type_menu'));
     }
 
     public function login(Request $request)

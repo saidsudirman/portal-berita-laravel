@@ -6,6 +6,11 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\UserController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/home', function () {
     return view('home', ['title' => 'Home Page 1    '])->name('WELCOME HOME');
@@ -42,3 +47,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::get('/index', function () {
     return view('admin.index'); // Ganti dengan tampilan dashboard
 })->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
+
+Route::get('/user', [UserController::class, 'index'])->name('user');
+
+Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+
+Route::get('/index', [DashboardController::class, 'index'])->name('events.index');
