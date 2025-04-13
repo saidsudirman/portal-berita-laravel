@@ -45,7 +45,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/index', function () {
-    return view('admin.index'); // Ganti dengan tampilan dashboard
+    return view('pages.dashboard.index'); // Ganti dengan tampilan dashboard
 })->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
