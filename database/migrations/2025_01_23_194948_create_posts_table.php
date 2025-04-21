@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('author_id')->constrained(
-                table:'users',
-                indexName: 'posts_author_id'
+            table:'users',
+            indexName: 'posts_author_id'
             );
             // $table->string('category_id');
             $table->foreignId('category_id')->constrained(

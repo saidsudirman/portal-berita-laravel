@@ -9,9 +9,10 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
-              <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
-              <x-nav-link href="/cai" :active="request()->is('cai')">Cai</x-nav-link>
+              <x-nav-link href="/" :active="request()->is('posts')">Blog</x-nav-link>
+              <x-nav-link href="/informasi" :active="request()->is('informasi')">Informasi</x-nav-link>
               <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+              <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
             </div>
           </div>
         </div>
@@ -71,8 +72,8 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
-        <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
-        <x-nav-link href="/cai" :active="request()->is('cai')">Caiii</x-nav-link>
+        <x-nav-link href="/" :active="request()->is('posts')">Blog</x-nav-link>
+        <x-nav-link href="/informasi" :active="request()->is('informasi')">Informasi</x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
       </div>
       <div class="border-t border-gray-700 pb-3 pt-4">

@@ -17,7 +17,16 @@ class KategoriController extends Controller
         return view('pages.kategori.index', compact('type_menu'));
     }
 
-    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $type_menu = 'kategori';
+        return view('pages.kategori.create', compact('type_menu'));
+    }
 
     /**
      * Store a newly created resource in storage.

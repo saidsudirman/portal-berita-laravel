@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    public function Login()
     {
-        $type_menu = 'event';
+        $type_menu = 'login';
         return view('login', compact('type_menu'));
     }
 
-    public function login(Request $request)
+    public function authenticate(Request $request)
     {
         $credentials = $request->validate([
             'username' => 'required|string',
@@ -22,12 +22,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard'); // Ganti dengan halaman tujuan setelah login
+            return redirect()->intended('/dashboard');
         }
 
-        return back()->with('error', 'Username atau Password salah');
+        return back()->with('error', 'Username atau Password salah')->withInput();
     }
 
+    // Optional, hanya jika ingin handle logout lewat controller
     public function logout(Request $request)
     {
         Auth::logout();

@@ -44,26 +44,24 @@
                                         </div>
                                     </form>
                                 </div>
-                                {{-- <a href="{{ route('peserta.create') }}">
+                                <a href="{{ route('kategori.create') }}">
                                     <button class="btn btn-primary">Tambah Data</button>
-                                </a> --}}
+                                </a>
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>
+                                            <th class="p-0 text-center">
                                                 No
                                             </th>
-                                            <th>Nama Kategori</th>
-                                            <th>Slug</th>
-                                            <th>Action</th>
+                                            <th class="p-0 text-center">Nama Kategori</th>
+                                            <th class="p-0 text-center">Action</th>
                                         </tr>
                                         <tr>
                                             <td class="p-0 text-center">1</td>
-                                            <td>Akademik Kampus</td>
-                                            <td class="align-middle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam totam nemo eveniet, recusandae labore autem, minus rem quidem nobis repudiandae iusto illo cupiditate magni sit, quasi sed dignissimos unde et?</td>
-                                            <td>
+                                            <td class="p-0 text-center">Akademik Kampus</td>
+                                            <td class="p-0 text-center">
                                                 <button class="btn btn-primary"
                                                 data-toggle="modal"
                                                 data-target="#exampleModal">Edit</button>

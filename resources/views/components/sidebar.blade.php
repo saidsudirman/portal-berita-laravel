@@ -36,6 +36,10 @@
                 <a class="nav-link"
                     href="{{ url('kategori') }}"><i class="far fa-square"></i> <span>Kategori</span></a>
             </li>
+            <li class="{{ Request::is('login') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="{{ url('login') }}"><i class="far fa-square"></i> <span>Logout</span></a>
+            </li>
             {{-- <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link"
                     href="{{ url('kategori_event') }}"><i class="far fa-square"></i> <span>Kategori Event</span></a>
