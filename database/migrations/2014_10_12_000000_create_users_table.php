@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->string('pas_foto')->nullable();
             $table->timestamps();
         });
     }
@@ -31,7 +33,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
-    // use App\Models\User;
-
 
 };

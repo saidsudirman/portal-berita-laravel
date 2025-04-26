@@ -27,18 +27,22 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
-
+                        
                         <div class="card">
                             <div class="card-header">
                                 <h4>Horizontal Form</h4>
                             </div>
+                            <form action="{{ route('admin.store') }}" method="POST" enctype = "multipart/form-data">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-row">
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Username</label>
-                                        <input type="email"
+                                        <input type="text"
                                             class="form-control"
                                             id="inputEmail4"
+                                            name="username"
                                             placeholder="Username">
                                     </div>
                                     <div class="form-group col-md-6">
@@ -46,6 +50,7 @@
                                         <input type="password"
                                             class="form-control"
                                             id="inputPassword4"
+                                            name="password"
                                             placeholder="Password">
                                     </div>
                                 </div>
@@ -54,52 +59,31 @@
                                     <input type="text"
                                         class="form-control"
                                         id="inputAddress"
+                                        name="name"
                                         placeholder="Nama Anda">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress2">Email</label>
-                                    <input type="text"
+                                    <input type="email"
                                         class="form-control"
                                         id="inputAddress2"
+                                        name="email"
                                         placeholder="Email">
                                 </div>
-                                {{-- <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">City</label>
-                                        <input type="text"
-                                            class="form-control"
-                                            id="inputCity">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">State</label>
-                                        <select id="inputState"
-                                            class="form-control">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip</label>
-                                        <input type="text"
-                                            class="form-control"
-                                            id="inputZip">
-                                    </div>
-                                </div> --}}
-                                <div class="form-group mb-0">
-                                    <div class="form-check">
-                                        <input class="form-check-input"
-                                            type="checkbox"
-                                            id="gridCheck">
-                                        <label class="form-check-label"
-                                            for="gridCheck">
-                                            Check me out
-                                        </label>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Foto</label>
+                                    <div class="col-md-7">
+                                        <div id="image-preview" class="image-preview">
+                                            <label for="image-upload" id="image-label">Pilih Foto</label>
+                                            <input required type="file" name="pas_foto" id="image-upload">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Submit</button>
-                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminController;
 
-// Public Routes
+// Halaman utama (umum, bisa diakses tanpa login)
 Route::get('/', function () {
     return view('posts', [
         'title' => 'Blog',
@@ -50,30 +50,43 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     ]);
 });
 
-// Auth Routes
-Route::get('/login', [AuthController::class, 'login'])->name('login.form')->middleware('ValidasiUser');
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login')->middleware('ValidasiUser');
+// Login dan Logout
+Route::middleware('ValidasiUser')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login.form');
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
+});
 
-Route::post('/logout', function () {
-    auth()->logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-    return redirect('/login');
-})->name('logout')->middleware('ValidasiUser');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // Logout hanya bisa dilakukan jika sudah login
 
-// Dashboard
-
-
-// Admin - Hanya untuk admin
+// Halaman backend - hanya bisa diakses setelah login
 Route::middleware(['auth', 'ValidasiUser'])->group(function () {
+    // Admin
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('ValidasiUser');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Berita
     Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
+    Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
     Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
+    Route::post('/berita/store', [BeritaController::class, 'store'])->name('berita.store');
+    Route::get('/berita/edit/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
+    Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
-
+    // Kategori
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+    Route::get('/kategori/index', [KategoriController::class, 'index'])->name('kategori.index');
     Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 });

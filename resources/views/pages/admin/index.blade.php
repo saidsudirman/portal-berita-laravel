@@ -51,30 +51,49 @@
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table-striped table">
-                                        <tr>
-                                            <th>
-                                                No
-                                            </th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
-                                            <th>Username</th>
-                                            <th>Paswword</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0 text-center">1</td>
-                                            <td>SAID</td>
-                                            <td class="align-middle">saidsudirman17@gmail.com</td>
-                                            <td>CAIII</td>
-                                            <td>123</td>
-                                            <td>
-                                                <button class="btn btn-primary"
-                                                data-toggle="modal"
-                                                data-target="#exampleModal">Edit</button>
-                                                {{-- <a href="#" class="btn btn-warning">Edit</a> --}}
-                                                <a href="#" class="btn btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    No
+                                                </th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
+                                                <th>Username</th>
+                                                <th>Paswword</th>
+                                                <th>Foto</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($datas as $index => $admin)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $admin->name }}</td>
+                                                    <td class="align-middle">{{ $admin->email }}</td>
+                                                    <td>{{ $admin->username }}</td>
+                                                    <td>{{ $admin->password }}</td>
+                                                    <td>
+                                                        <img class="img img-fluid" width="200"
+                                                            src="{{ asset('upload/pas_foto/' . $admin->pas_foto) }}"
+                                                            alt="Pas Foto Guru">
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('admin.edit', $admin->id) }}"
+                                                            class="btn btn-warning my-2">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <form action="{{ route('admin.destroy', $admin->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus admin ini?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -130,5 +149,48 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/components-table.js') }}"></script>
     <script src="{{ asset('js/page/bootstrap-modal.js') }}"></script>
+    <script>
+         $(document).ready(function () {
+            $('#table-admin').DataTable();
+        });
+
+        function deleteData(id, endpoint) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                $.ajax({
+                    url: `/${endpoint}/${id}`,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        alert('Data berhasil dihapus.');
+                        location.reload();
+                    },
+                    error: function (error) {
+                        alert('Terjadi kesalahan saat menghapus data.');
+                    }
+                });
+            }
+        }
+
+        function verifikasi(id, endpoint) {
+            if (confirm('Apakah Anda yakin ingin memverifikasi data ini?')) {
+                $.ajax({
+                    url: `/${endpoint}/verifikasi/${id}`,
+                    type: 'PUT',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        alert('Data berhasil diverifikasi.');
+                        location.reload();
+                    },
+                    error: function (error) {
+                        alert('Terjadi kesalahan saat memverifikasi data.');
+                    }
+                });
+            }
+        }
+    </script>
 
 @endpush
