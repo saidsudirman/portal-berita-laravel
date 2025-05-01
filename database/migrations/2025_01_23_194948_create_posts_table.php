@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('author_id')->constrained(
+            $table->string('author_id')->constrained(
             table:'users',
             indexName: 'posts_author_id'
             );
-            // $table->string('category_id');
-            $table->foreignId('category_id')->constrained(
+            $table->string('category_id')->constrained(
                 table:'categories',
                 indexName:'posts_category_id'
             );
             $table->string('slug')->unique();
             $table->text('body');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

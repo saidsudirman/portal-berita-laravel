@@ -11,7 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'author_id', 'slug', 'body'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'author_id', 
+        'category_id',
+        'body',
+        'image',
+    ];
 
     protected $with = ['author', 'category'];
 

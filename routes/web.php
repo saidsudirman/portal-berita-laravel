@@ -56,11 +56,11 @@ Route::middleware('ValidasiUser')->group(function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
 });
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // Logout hanya bisa dilakukan jika sudah login
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Halaman backend - hanya bisa diakses setelah login
+
 Route::middleware(['auth', 'ValidasiUser'])->group(function () {
-    // Admin
+
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
@@ -69,10 +69,10 @@ Route::middleware(['auth', 'ValidasiUser'])->group(function () {
     Route::put('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
-    // Dashboard
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Berita
+
     Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
     Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
     Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
@@ -81,7 +81,8 @@ Route::middleware(['auth', 'ValidasiUser'])->group(function () {
     Route::put('/berita/update/{id}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
-    // Kategori
+
+    
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
     Route::get('/kategori/index', [KategoriController::class, 'index'])->name('kategori.index');
     Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');

@@ -18,12 +18,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'SAID',
             'username' => 'CAIII',
-            'email' => 'saidsudirman17@gmail.com',
+            'email' => 'cai17@gmail.com',
             'email_verified_at'=>now(),
             'password' => Hash::make('123'),
             'remember_token' => Str::random(10)
         ]);
-
-        User::factory(5)->create();
     }
 }

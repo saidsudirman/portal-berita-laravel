@@ -41,7 +41,7 @@ class AdminController extends Controller
             $photo->move(public_path('upload/pas_foto'), $filename);
             $photoPath = 'upload/pas_foto/' . $filename;
             $photo = $filename;
-        }  
+        } 
         // dd($photo);
         //   dd($data['pas_foto']);
         User::create([
@@ -68,6 +68,8 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     {
+        $data = $request->all();
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,

@@ -10,6 +10,9 @@ class AuthController extends Controller
     public function Login()
     {
         $type_menu = 'login';
+        if (Auth::user()) {
+            return redirect()->intended('/dashboard');
+        }
         return view('login', compact('type_menu'));
     }
 

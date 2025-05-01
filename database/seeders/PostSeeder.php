@@ -13,8 +13,13 @@ class Post extends Seeder
      */
     public function run(): void
     {
-        
-        //
-        User::factory(5)->create();
+        Post::create([
+            'title' => $request->title,
+            'author_id' => $request->author_id,
+            'category_id' => $request->category_id,
+            'slug' => $request->slug,
+            'body' => $request->body,
+            'image' => $imagePath,
+        ]);
     }
 }

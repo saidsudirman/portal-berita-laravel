@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create')
+@section('title', 'Create Berita')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -10,97 +10,88 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Form</h1>
+                <h1>Form Tambah Berita</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Bootstrap Components</a></div>
-                    <div class="breadcrumb-item">Form</div>
+                    <div class="breadcrumb-item"><a href="#">Berita</a></div>
+                    <div class="breadcrumb-item">Tambah Berita</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Forms</h2>
+                <h2 class="section-title">Tambah Berita</h2>
                 <p class="section-lead">
-                    Examples and usage guidelines for form control styles, layout options, and custom components for
-                    creating a wide variety of forms.
+                    Isi form berikut untuk menambah berita baru.
                 </p>
 
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-12">
-
                         <div class="card">
                             <div class="card-header">
-                                <h4>Horizontal Form</h4>
+                                <h4>Form Berita</h4>
                             </div>
                             <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Penulis</label>
-                                        <input type="email"
-                                            class="form-control"
-                                            id="inputEmail4"
-                                            placeholder="Penulis">
+                                <form action="{{ route('berita.store') }}" method="POST" enctype = "multipart/form-data">
+                                    @csrf
+
+                                    <div class="form-group">
+                                        <label for="title">Judul Berita</label>
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" placeholder="Judul Berita" required>
+                                        @error('title')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Judul Berita</label>
-                                        <input type="email"
-                                            class="form-control"
-                                            id="inputEmail4"
-                                            placeholder="Judul Berita">
+
+                                    <div class="form-group">
+                                        <label for="author_id">Penulis</label>
+                                        <input type="text" class="form-control @error('author_id') is-invalid @enderror" id="author_id" name="author_id" value="{{ old('author_id') }}" placeholder="Penulis" required>
+                                        @error('author_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress">Slug</label>
-                                    <input type="text"
-                                        class="form-control"
-                                        id="inputAddress"
-                                        placeholder="Slug">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="inputAddress2">Address 2</label>
-                                    <input type="text"
-                                        class="form-control"
-                                        id="inputAddress2"
-                                        placeholder="Apartment, studio, or floor">
-                                </div> --}}
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">Update</label>
-                                        <input type="text"
-                                            class="form-control"
-                                            id="inputCity">
+
+                                    <div class="form-group">
+                                        <label for="slug">Slug</label>
+                                        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" placeholder="Slug Berita" required>
+                                        @error('slug')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">Kategori</label>
-                                        <select id="inputState"
-                                            class="form-control">
-                                            <option selected>UKM</option>
-                                            <option>Ricuh</option>
-                                            <option>Skandal</option>
-                                            <option>Akademik Kampus</option>
+
+                                    <div class="form-group">
+                                        <label for="body">Isi Berita</label>
+                                        <textarea class="form-control @error('body') is-invalid @enderror" id="body" name="body" rows="4" placeholder="Isi Berita" required>{{ old('body') }}</textarea>
+                                        @error('body')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="image">Gambar</label>
+                                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                        @error('image')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="category_id">Kategori</label>
+                                        <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id" required>
+                                            <option value="">Pilih Kategori</option>
+                                            <option value="1" @if(old('category_id') == 1) selected @endif>UKM</option>
+                                            <option value="2" @if(old('category_id') == 2) selected @endif>Ricuh</option>
+                                            <option value="3" @if(old('category_id') == 3) selected @endif>Skandal</option>
+                                            <option value="4" @if(old('category_id') == 4) selected @endif>Akademik Kampus</option>
                                         </select>
+                                        @error('category_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    {{-- <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip</label>
-                                        <input type="text"
-                                            class="form-control"
-                                            id="inputZip">
-                                    </div> --}}
-                                </div>
-                                <div class="form-group mb-0">
-                                    <div class="form-check">
-                                        <input class="form-check-input"
-                                            type="checkbox"
-                                            id="gridCheck">
-                                        <label class="form-check-label"
-                                            for="gridCheck">
-                                            Check me out
-                                        </label>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Tambah Berita</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -112,6 +103,4 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
 @endpush

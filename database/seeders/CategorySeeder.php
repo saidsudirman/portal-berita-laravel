@@ -11,28 +11,36 @@ class CategorySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        //
-        Category::create([
-            'name' => 'Skandal',
+        // Menambahkan kategori jika belum ada
+        Category::firstOrCreate([
             'slug' => 'skandal',
-            'color'=> 'red',
+        ], [
+            'name' => 'Skandal',
+            'color' => 'red',
         ]);
-        Category::create([
-            'name' => 'UKM',
+    
+        Category::firstOrCreate([
             'slug' => 'ukm',
-            'color'=>'green',
+        ], [
+            'name' => 'UKM',
+            'color' => 'green',
         ]);
-        Category::create([
-            'name' => 'Akademik Kampus',
+    
+        Category::firstOrCreate([
             'slug' => 'akademik_kampus',
-            'color'=> 'blue'
+        ], [
+            'name' => 'Akademik Kampus',
+            'color' => 'blue',
         ]);
-        Category::create([
-            'name' => 'Ricuh',
+    
+        Category::firstOrCreate([
             'slug' => 'ricuh',
-            'color'=> 'yellow'
+        ], [
+            'name' => 'Ricuh',
+            'color' => 'yellow',
         ]);
     }
+    
 }
