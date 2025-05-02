@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         Post::create([
             'title' => 'Berita Pertama',
             'slug' => 'berita-pertama',
-            'author_id' => User::where('username', 'CAIII')->first()->id,
+            'author' => 'CAIII',
             'category_id' => Category::first()->id, // Menyambungkan dengan kategori pertama
             'body' => 'Ini adalah konten berita pertama.',
             'image' => 'caiiii.jpg', // Jika ada gambar, masukkan path gambar

@@ -14,7 +14,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'slug',
-        'author_id', 
+        'author', 
         'category_id',
         'body',
         'image',
@@ -32,22 +32,23 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeFilter(Builder $query, array $filters):void
+    public function scopeFilter($query, array $filters)
     {
-        // if($filters['search']=='love') $filters['search']='rahma';
-        $query->when(
-            $filters['search'] ?? false, fn ($query, $search)=>
-            $query->where('title', 'like', '%' . $search . '%')
-        );
+        if ($filters['search'] ?? false) {
+            $query->where('title', 'like', '%' . $filters['search'] . '%')
+                ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+        }
 
-        $query->when(
-            $filters['category'] ?? false,
-            fn($query, $category)=>$query->whereHas('category', fn($query)=> $query->where('slug', $category))
-        );
+        if ($filters['category'] ?? false) {
+            $query->whereHas('category', function ($query) use ($filters) {
+                $query->where('slug', $filters['category']);
+            });
+        }
 
-        $query->when(
-            $filters['author'] ?? false,
-            fn($query, $author)=>$query->whereHas('author', fn($query)=> $query->where('username', $author))
-        );
+        if ($filters['author'] ?? false) {
+            $query->whereHas('author', function ($query) use ($filters) {
+                $query->where('username', $filters['author']);
+            });
+        }
     }
 }

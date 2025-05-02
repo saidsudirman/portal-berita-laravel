@@ -43,12 +43,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="author_id">Penulis</label>
-                                        <input type="text" class="form-control @error('author_id') is-invalid @enderror" id="author_id" name="author_id" value="{{ old('author_id') }}" placeholder="Penulis" required>
-                                        @error('author_id')
+                                        <label for="author">Penulis</label>
+                                        <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" value="{{ old('author') }}" placeholder="Nama Penulis" required>
+                                        @error('author')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    
 
                                     <div class="form-group">
                                         <label for="slug">Slug</label>

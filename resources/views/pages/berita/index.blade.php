@@ -29,7 +29,7 @@
                                 <div class="d-flex">
                                     <form class="form-inline mr-2" method="GET" action="{{ route('berita.index') }}">
                                         <div class="input-group">
-                                            <input type="text" name="search" class="form-control" placeholder="Search Judul">
+                                            <input type="text" name="search" class="form-control" placeholder="Search Judul" value="{{ request('search') }}">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -38,15 +38,17 @@
                                     <a href="{{ route('berita.create') }}" class="btn btn-primary">Tambah Data</a>
                                 </div>
                             </div>
+
                             <div class="card-body p-0">
                                 <div class="table-responsive">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped mb-0">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Penulis</th>
                                                 <th>Slug</th>
                                                 <th>Judul Berita</th>
+                                                <th>Isi Berita</th>
                                                 <th>Kategori</th>
                                                 <th>Tanggal Update</th>
                                                 <th>Gambar</th>
@@ -54,14 +56,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($datas as $index => $berita)
+                                            @forelse ($datas as $index => $berita)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td>{{ $berita->author->name ?? '-' }}</td>
+                                                    <td>{{ $berita->author}}</td>
                                                     <td>{{ $berita->slug }}</td>
                                                     <td>{{ $berita->title }}</td>
+                                                    <td>{{ $berita->body }}</td>
                                                     <td>{{ $berita->category->name ?? '-' }}</td>
-                                                    <td>{{ $berita->updated_at->format('l, d F Y') }}</td>
+                                                    <td>{{ $berita->updated_at->translatedFormat('l, d F Y') }}</td>
                                                     <td>
                                                         @if ($berita->image)
                                                             <img class="img img-fluid" width="150" src="{{ asset($berita->image) }}" alt="Gambar Berita">
@@ -70,10 +73,10 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-warning btn-sm my-1">
+                                                        <a href="{{ route('berita.edit', $berita->id) }}" class="btn btn-warning btn-sm mb-1">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus berita ini?');">
+                                                        <form action="{{ route('berita.destroy', $berita->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus berita ini?');">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm">
@@ -82,16 +85,21 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @empty
+                                                <tr>
+                                                    <td colspan="8" class="text-center py-3 text-muted">Belum ada data berita.</td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
-                                    @if($datas->isEmpty())
-                                        <div class="text-center p-3">
-                                            <p class="text-muted">Belum ada data berita.</p>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
+
+                            @if (method_exists($datas, 'links'))
+                                <div class="card-footer text-right">
+                                    {{ $datas->links() }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

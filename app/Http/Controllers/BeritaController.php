@@ -3,66 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BeritaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $datas = Post::get();
+        $datas = Post::all();
         $type_menu = 'berita';
-        return view('pages.berita.index', compact('type_menu', "datas"));
+        return view('pages.berita.index', compact('type_menu', 'datas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $type_menu = 'berita';
-        return view('pages.berita.create', compact('type_menu'));
+        $categories = Category::all();
+        return view('pages.berita.create', compact('type_menu', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $data = $request->all();
-        // dd(request()->hasFile('pas_foto'));
         $request->validate([
             'title' => 'required|string|max:255',
-            'author_id' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'slug' => 'required|string|max:255|unique:posts,slug',
             'body' => 'required|string',
             'image' => 'nullable|image|max:2048',
         ]);
+
         $imagePath = null;
 
-        if (request()->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $gambar = $request->file('image');
             $filename = date('Ymd_His') . '_' . uniqid() . '.' . $gambar->getClientOriginalExtension();
             $gambar->move(public_path('upload/image'), $filename);
             $imagePath = 'upload/image/' . $filename;
-            $gambar = $filename;
-        }  
-        // dd($gambar);
-        //   dd($data['pas_foto']);
+        }
+
         Post::create([
             'title' => $request->title,
-            'slug' => \Str::slug($request->title),
-            'author_id' => auth()->id(),
+            'slug' => $request->slug,
+            'author' => $request->author,
             'category_id' => $request->category_id,
             'body' => $request->body,
             'image' => $imagePath,
@@ -71,91 +53,47 @@ class BeritaController extends Controller
         return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $berita = Berita::findOrFail($id);
+        $berita = Post::findOrFail($id);
         $categories = Category::all();
-        return view('pages.admin.berita.edit', compact('berita', 'categories'));
+        return view('pages.berita.edit', compact('berita', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-      
         $request->validate([
             'title' => 'required|string|max:255',
-            'author_id' => 'required|integer|exists:users,id',
-            'slug' => 'required|string|max:255|unique:posts,slug,',
+            'author' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
             'body' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|integer',
         ]);
-
-        $berita = Post ::findOrFail($id);
-
+    
+        $berita = Post::findOrFail($id);
+    
         $berita->title = $request->title;
-        $berita->author_id = $request->author_id;
+        $berita->author = $request->author;
         $berita->slug = $request->slug;
-
-        $imagePath = $post->image;
-
+        $berita->body = $request->body;
+        $berita->category_id = $request->category_id;
+    
         if ($request->hasFile('image')) {
-            if (file_exists(public_path($post->image))) {
-                unlink(public_path($post->image));
-            }
-            
-
-            $gambar = $request->file('image');
-            $filename = date('Ymd_His') . '_' . uniqid() . '.' . $gambar->getClientOriginalExtension();
-            $gambar->move(public_path('upload/image'), $filename);
-            $imagePath = 'upload/image/' . $filename;
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('upload/berita'), $imageName);
+            $berita->image = $imageName;
         }
-
-
-        $post->update([
-            'title' => $request->title,
-            'author_id' => $request->author_id,
-            'slug' => \Str::slug($request->title),
-            'body' => $request->body,
-            'image' => $imagePath,
-        ]);
-
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui.');
+    
+        $berita->save();
+    
+        return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui!');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $berita = Berita::findOrFail($id);
+        $berita = Post::findOrFail($id);
 
         if ($berita->image && file_exists(public_path($berita->image))) {
             unlink(public_path($berita->image));
