@@ -3,15 +3,14 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="size-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <img class="size-8" src="home/img/LogoUndipa.png" alt="Your Company">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
+              {{-- <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> --}}
               <x-nav-link href="/" :active="request()->is('posts')">Blog</x-nav-link>
               <x-nav-link href="/informasi" :active="request()->is('informasi')">Informasi</x-nav-link>
-              <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+              
               <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
             </div>
           </div>
@@ -71,7 +70,6 @@
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
         <x-nav-link href="/" :active="request()->is('posts')">Blog</x-nav-link>
         <x-nav-link href="/informasi" :active="request()->is('informasi')">Informasi</x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
@@ -79,7 +77,7 @@
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="shrink-0">
-            <img class="size-10 rounded-full" src="{{ asset ('image/Caiii.jpeg') }}" alt="">
+            {{-- <img class="size-10 rounded-full" src="{{ asset ('image/Caiii.jpeg') }}" alt=""> --}}
           </div>
           <div class="ml-3">
             <div class="text-base/5 font-medium text-white">Said</div>

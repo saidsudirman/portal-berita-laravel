@@ -43,17 +43,15 @@ Route::get('/posts', function () {
     ]);
 })->name('posts.index');
 
-Route::get('/home', function () {
-    return view('home', ['title' => 'Home Page 1', 'nama' => 'SAID SUDIRMAN']);
-});
+
 
 Route::get('/informasi', function () {
     return view('cai', ['title' => 'Cai', 'nama' => 'INFORMASI KAMPUS']);
 });
 
-Route::get('/contact', function () {
-    return view('contact', ['title' => 'Contact']);
-});
+// Route::get('/contact', function () {
+//     return view('contact', ['title' => 'Contact']);
+// });
 
 // Route::get('/posts/{post:slug}', function (Post $post) {
 //     return view('post', ['title' => 'Single Post', 'post' => $post]);
@@ -73,7 +71,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     ]);
 });
 
-// Login dan Logout
+
 Route::middleware('ValidasiUser')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login.form');
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login');

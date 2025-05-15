@@ -8,7 +8,7 @@
                 <a href="{{ url('/posts') }}" class="font-medium text-xs text-blue-800 hover:underline">&laquo; Back to all post</a>
                 <address class="flex items-center my-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                        <img class="mr-4 w-16 h-16 rounded-full" src="{{ asset('image/CAIII.jpg')}}" alt="{{ $post->author }}">
+                        {{-- <img class="mr-4 w-16 h-16 rounded-full" src="{{ asset('image/CAIII.jpg')}}" alt="{{ $post->author }}"> --}}
                         <div>
                             <a href="/posts?author={{ $post ->author}}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author }}</a>
                             <p class="text-base text-gray-500 dark:text-gray-400 mb-1">{{ $post->created_at->diffForHumans() }}</p>

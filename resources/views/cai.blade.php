@@ -1,7 +1,27 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot>
+    <div class="container-fluid bg-info p-0 wow fadeIn" data-wow-delay="0.1s">
+    <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center py-3 me-4 text-white">
+                    <small class="fa fa-map-marker-alt text-white me-2"></small>
+                    <small>Makassar, Sulawesi Selatan</small>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center py-3 text-white">
+                    <small class="far fa-clock text-white me-2"></small>
+                    <small>Mon - Fri : 07:30 - 16:00 Saturday : 09:00 - 14:00</small>
+            </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4 text-white">
+                    <small class="fa fa-phone-alt text-white me-2"></small>
+                    <small>Kontak Admin: +62 823-9815-0355</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
-       <!-- Header Start -->
+    <!-- Header Start -->
     <div class="container-fluid header bg-primary p-0 mb-5">
             <div class="row g-0 align-items-center flex-column-reverse flex-lg-row">
                 <div class="col-lg-6 p-5 wow fadeIn" data-wow-delay="0.1s">
@@ -54,59 +74,68 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-heartbeat text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Pasca Serjana</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Magister Informatika(S2)</h4>
                         <p class="mb-4">Program Pascasarjana di Universitas Dipa Makassar merupakan jenjang pendidikan lanjutan yang ditujukan bagi lulusan sarjana (S1) yang ingin memperdalam keilmuan dan kompetensinya di bidang tertentu.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-x-ray text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Teknik Informatika</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Teknik Informatika(S1)</h4>
                         <p class="mb-4">Program Studi Teknik Informatika merupakan pilihan tepat bagi kamu yang ingin mendalami dunia teknologi informasi dan komputer. Program ini untuk mahasiswa dengan pengetahuan dan keterampilan dalam desain, pengembangan, pengujian, dan evaluasi perangkat lunak serta sistem komputer.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-tooth text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Sistem Informasi</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Sistem Informasi(S1)</h4>
                         <p class="mb-4">Program ini menggabungkan teknologi dan manajemen untuk menciptakan solusi informasi bagi organisasi. Terakreditasi B, cocok untuk kamu yang ingin berkarier sebagai analis sistem, programmer, atau manajer TI. Biaya kuliah terjangkau, fasilitas lengkap, dan dosen berpengalaman.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-wheelchair text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Rekaya Perangkat Lunak</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Rekaya Perangkat Lunak(S1)</h4>
                         <p class="mb-4">Program ini fokus pada pengembangan perangkat lunak, multimedia, game, dan teknologi masa depan seperti IoT dan cloud computing.
                             Terakreditasi Baik, cocok untuk kamu yang ingin jadi software engineer, game developer, atau technopreneur.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-brain text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Kewirausahaan</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Kewirausahaan(S1)</h4>
                         <p class="mb-4">Program ini membekali mahasiswa dengan pengetahuan dan keterampilan untuk merancang, mengelola, serta mengembangkan usaha atau bisnis. Fokus utama pada inovasi, ekonomi kreatif, dan digital entrepreneurship.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item bg-light rounded h-100 p-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-vials text-primary fs-4"></i>
-                        </div>
-                        <h4 class="mb-3">Manajemen Informatika</h4>
+                        </div> --}}
+                        <h4 class="mb-3">Manajemen Informatika(D3)</h4>
                         <p class="mb-4">Program D3 ini menggabungkan ilmu komputer dan manajemen bisnis. Mahasiswa belajar pemrograman, analisis sistem, dan pengelolaan data.
                             Terakreditasi B, cocok untuk kamu yang ingin berkarier sebagai programmer, web developer, atau IT support.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        {{-- <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-vials text-primary fs-4"></i>
+                        </div> --}}
+                        <h4 class="mb-3">Bisnis Digital(S1)</h4>
+                        <p class="mb-4">Program studi Bisnis Digital (S1) Universitas Dipa Makassar menawarkan wawasan menarik tentang digitalisasi proses bisnis dan memberi mahasiswa pengetahuan mendalam tentang berbagai teknologi dan strategi digital yang dapat digunakan dalam manajemen bisnis.</p>
                     </div>
                 </div>
             </div>
@@ -127,45 +156,46 @@
                         <div class="row g-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
-                                        <i class="fa fa-user-md text-primary"></i>
-                                    </div>
+                                    {{-- <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    </div> --}}
                                     <div class="ms-4">
-                                        <p class="text-white mb-2">Berpengalaman</p>
-                                        <h5 class="text-white mb-0">Dosen</h5>
+                                        <h4 class="text-white mb-2">Dosen</h4>
+                                        <p class="text-white mb-0">Berpengalaman</p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                    {{-- <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
                                         <i class="fa fa-check text-primary"></i>
-                                    </div>
+                                    </div> --}}
                                     <div class="ms-4">
-                                        <p class="text-white mb-2">Berkualitas</p>
-                                        <h5 class="text-white mb-0">Kampus</h5>
+                                        <h4 class="text-white mb-2">Kampus</h4>
+                                        <p class="text-white mb-0">Berkualitas</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                    {{-- <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
                                         <i class="fa fa-comment-medical text-primary"></i>
-                                    </div>
+                                    </div> --}}
                                     <div class="ms-4">
-                                        <p class="text-white mb-2">Terjangkau</p>
-                                        <h5 class="text-white mb-0">Biaya</h5>
+                                        <h4 class="text-white mb-2">Biaya</h4>
+                                        <p class="text-white mb-0">Terjangkau</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                    {{-- <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
                                         <i class="fa fa-headphones text-primary"></i>
-                                    </div>
+                                    </div> --}}
                                     <div class="ms-4">
-                                        <p class="text-white mb-2">24 Jam</p>
-                                        <h5 class="text-white mb-0">Siap Melayani</h5>
+                                        <h4 class="text-white mb-2">Siap Untuk</h4>
+                                        <p class="text-white mb-0">Mahasiswa</p>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +224,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('home/img/ketua.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('home/img/REKTORXX-scaled.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
                             <h5>Dr. Y. Johny W. Soetikno, S.E.,M.M.</h5>
@@ -205,39 +235,125 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('home/img/rauf.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('home/img/ARYASA.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Dr. Abdul Rauf, SH.,MH.</h5>
-                            <p class="text-primary">Dosen Pancasila</p>
+                            <h5>Komang Aryasa, S.Kom.,MT.</h5>
+                            <p class="text-primary">Wakil Rektor 1 Universitas DIPA Makassar</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('home/img/inayuliana.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('home/img/sekunx.png') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>INA YULIANADEWI, S.E.,M.M</h5>
-                            <p class="text-primary">Presiden</p>
+                            <h5>Indra Samsie, S.Kom., M.Kom.</h5>
+                            <p class="text-primary">Wakil Rektor 2 Universitas DIPA Makassar</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item position-relative rounded overflow-hidden">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('home/img/salmiati.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('home/img/APRI-scaled.jpg') }}" alt="">
                         </div>
                         <div class="team-text bg-light text-center p-4">
-                            <h5>Salmiati, S.kom.,M.T.</h5>
-                            <p class="text-primary">Bendahara</p>
+                            <h5>Dr. Aprizal, S. Kom.MM</h5>
+                            <p class="text-primary">Wakil Rektor 3 Universitas DIPA Makassar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/wr3x.png') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Jufri, S.Kom.,MT.</h5>
+                            <p class="text-primary">Sekretaris Universitas DIPA Makassar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/sekx.png') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Marsha, SE.,MM.</h5>
+                            <p class="text-primary">Sekretaris Rektor Universitas DIPA Makassar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/tix.png') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Ir. H. Irsal,M.T.</h5>
+                            <p class="text-primary">KAPRODI TEKNIK INFORMATIKA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/irma.jpg') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Andi Irmayana,S.Kom.,M.T</h5>
+                            <p class="text-primary">KAPRODI Sistem Informasi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/annah.jpg') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Annah,S.Kom.,M.T.</h5>
+                            <p class="text-primary">KAPRODI Rekayasa Perangkat Lunak</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/syukri.jpg') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>M. Syukri Mustafa, S.Si., MMSI.</h5>
+                            <p class="text-primary">KAPRODI Manajemen Informatika</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/sahlan.jpg') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Muh. Syahlan Natsir, S.Kom ., M.T</h5>
+                            <p class="text-primary">KAPRODI Bisnis Digital</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset('home/img/fatma.jpg') }}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>DR. Fatmasari, S.E.,MM.</h5>
+                            <p class="text-primary">KAPRODI Kewirausahaan</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
-
 </x-layout>
