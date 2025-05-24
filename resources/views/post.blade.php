@@ -8,7 +8,7 @@
                 <a href="{{ url('/posts') }}" class="font-medium text-xs text-blue-800 hover:underline">&laquo; Back to all post</a>
                 <address class="flex items-center my-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                        {{-- <img class="mr-4 w-16 h-16 rounded-full" src="{{ asset('image/CAIII.jpg')}}" alt="{{ $post->author }}"> --}}
+                        {{-- <img class="mr-4 w-16 h-16 rounded-full" src="{{}}" alt="{{ $post->author }}"> --}}
                         <div>
                             <a href="/posts?author={{ $post ->author}}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author }}</a>
                             <p class="text-base text-gray-500 dark:text-gray-400 mb-1">{{ $post->created_at->diffForHumans() }}</p>
@@ -22,7 +22,7 @@
                 </address>
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
                 <figure class="">
-                    <img src="{{ asset($post->image) }}"class="img-responsive" style="margin-left: auto;margin-right: auto; margin-top: auto;margin-bottom: auto;width:50%;" alt="Gambar Berita">
+                    <img src="{{ asset($post->image) }}"class="img-fluid d-block mx-auto" style="max-height: 300px; width: auto; border: 5px solid #343a40; border-radius: 10px;"alt="Gambar Berita">
                 </figure>
             </header>
             <p>{{ $post->body }}</p>

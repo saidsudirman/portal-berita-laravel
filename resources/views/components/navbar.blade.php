@@ -8,14 +8,14 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               {{-- <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> --}}
-              <x-nav-link href="/" :active="request()->is('posts')">Blog</x-nav-link>
+              <x-nav-link href="/" :active="request()->is('posts')">Berita</x-nav-link>
               <x-nav-link href="/informasi" :active="request()->is('informasi')">Informasi</x-nav-link>
               
               <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
             </div>
           </div>
         </div>
-        <div class="hidden md:block">
+        {{-- <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
 
             <!-- Profile dropdown -->
@@ -44,7 +44,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button type="button" @click="isOpen = !isOpen" 
