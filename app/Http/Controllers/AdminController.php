@@ -31,7 +31,7 @@ class AdminController extends Controller
             'email' => 'required|email',
             'username' => 'required',
             'password' => 'required',
-            'pas_foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'pas_foto' => 'nullable|image',
         ]);
         $photoPath = null;
 
@@ -75,7 +75,7 @@ class AdminController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'required|string|unique:users,username,' . $id,
             'password' => 'nullable|string|min:6|confirmed',
-            'pas_foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'pas_foto' => 'nullable|image',
         ]);
 
         $admin = User::findOrFail($id);

@@ -93,9 +93,9 @@
                                     <select name="category_id" id="category_id"
                                         class="form-control @error('category_id') is-invalid @enderror" required>
                                         <option value="">Pilih Kategori</option>
-                                        <option value="1" @selected(old('category_id', $berita->category_id) == 1)>UKM</option>
-                                        <option value="2" @selected(old('category_id', $berita->category_id) == 2)>Ricuh</option>
-                                        <option value="3" @selected(old('category_id', $berita->category_id) == 3)>Skandal</option>
+                                        <option value="1" @selected(old('category_id', $berita->category_id) == 1)>Skandal</option>
+                                        <option value="2" @selected(old('category_id', $berita->category_id) == 2)>UKM</option>
+                                        <option value="3" @selected(old('category_id', $berita->category_id) == 3)>Ricuh</option>
                                         <option value="4" @selected(old('category_id', $berita->category_id) == 4)>Akademik Kampus</option>
                                     </select>
                                     @error('category_id')

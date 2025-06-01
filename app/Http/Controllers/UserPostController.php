@@ -22,7 +22,7 @@ class UserPostController extends Controller
             'author' => 'required',
             'body' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'nullable|image|'
         ]);
 
         $imagePath = null;
